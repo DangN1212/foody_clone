@@ -1,39 +1,32 @@
 import React from 'react';
-import {
-    View,
-    TextInput,
-    TouchableOpacity,
-    Text,
-    StyleSheet,
-    Image
-} from 'react-native';
-import {
-    getSizeFromHeight,
-    getSizeFromWidth
-} from '../../ultilities/responsive';
+import { View, Text, TextInput, TouchableOpacity, Image } from 'react-native';
+import { images } from '../../assets/images';
 import KeyboardAvoidWrapper from '../../components/Keyboardavoidingwrapper';
 import { buttonStyles } from '../../components/styles/button';
-import { images } from '../../assets/images';
 import { flexContainer } from '../../components/styles/flexContainer';
-import { textStyles } from '../../components/styles/text';
 import { inputStyles } from '../../components/styles/input';
+import { textStyles } from '../../components/styles/text';
 import { ROUTES } from '../../ultilities/constant';
-
-export default function Login({ navigation }) {
-    const handleNavigateToSignIn = () => {
-        navigation.navigate(ROUTES.SIGNUP);
+import { getSizeFromHeight } from '../../ultilities/responsive';
+export default function index({ navigation }) {
+    const handleNavigateToSignIn = params => {
+        navigation.navigate(ROUTES.LOGIN);
     };
 
     return (
         <KeyboardAvoidWrapper>
-            <View style={flexContainer.container}>
-                <Text style={textStyles.title}>Sign in</Text>
+            <View
+                style={{
+                    ...flexContainer.container,
+                    ...flexContainer.wrapper
+                }}>
+                <Text style={textStyles.title}>Sign up</Text>
                 <Text style={textStyles.text}>
-                    Don't have an account?{' '}
+                    Enter your email and password for sign up, or{' '}
                     <Text
                         style={textStyles.colorOrgange}
                         onPress={handleNavigateToSignIn}>
-                        Sign up now!
+                        Already have account!
                     </Text>
                 </Text>
                 <TextInput
@@ -45,17 +38,25 @@ export default function Login({ navigation }) {
                     placeholder="Password"
                     secureTextEntry={true}
                 />
-                <Text style={textStyles.text02}>Forgot Password</Text>
+                <TextInput
+                    style={inputStyles.input}
+                    placeholder="Confirm Password"
+                    secureTextEntry={true}
+                />
                 <TouchableOpacity
                     style={{
                         ...buttonStyles.buttonSignIn,
                         ...buttonStyles.buttonCommon
                     }}>
-                    <Text style={buttonStyles.text}>sign in</Text>
+                    <Text style={buttonStyles.text}>sign up</Text>
                 </TouchableOpacity>
-                <Text style={{ marginVertical: getSizeFromHeight(24) }}>
-                    OR
+                <Text style={{ ...textStyles.text, textAlign: 'center' }}>
+                    By signing up you agree to our{' '}
+                    <Text style={textStyles.colorOrgange}>Terms condition</Text>{' '}
+                    &{' '}
+                    <Text style={textStyles.colorOrgange}>Privacy policy</Text>
                 </Text>
+                <Text style={{ marginBottom: getSizeFromHeight(32) }}>OR</Text>
                 <TouchableOpacity
                     style={{
                         ...buttonStyles.buttonCommon,
