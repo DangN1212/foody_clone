@@ -7,14 +7,16 @@
  */
 
 import React from 'react';
-import StackNavigation from './src/navigations/'
-import {SafeAreaProvider} from 'react-native-safe-area-context';
-import {NavigationContainer} from '@react-navigation/native';
+import StackNavigation from './src/navigations/stack';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { NavigationContainer } from '@react-navigation/native';
 const App = () => {
-return (<NavigationContainer>
-  <SafeAreaProvider>
-    <StackNavigation />
-  </SafeAreaProvider>
-</NavigationContainer>)
-}
+    return (
+        <NavigationContainer>
+            <SafeAreaProvider>
+                <StackNavigation />
+            </SafeAreaProvider>
+        </NavigationContainer>
+    );
+};
 export default App;

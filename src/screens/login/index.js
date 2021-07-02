@@ -24,6 +24,10 @@ export default function Login({ navigation }) {
         navigation.navigate(ROUTES.SIGNUP);
     };
 
+    const handleSignIn = params => {
+        navigation.navigate(ROUTES.TAB);
+    };
+
     return (
         <KeyboardAvoidWrapper>
             <View style={flexContainer.container}>
@@ -50,7 +54,8 @@ export default function Login({ navigation }) {
                     style={{
                         ...buttonStyles.buttonSignIn,
                         ...buttonStyles.buttonCommon
-                    }}>
+                    }}
+                    onPress={handleSignIn}>
                     <Text style={buttonStyles.text}>sign in</Text>
                 </TouchableOpacity>
                 <Text style={{ marginVertical: getSizeFromHeight(24) }}>

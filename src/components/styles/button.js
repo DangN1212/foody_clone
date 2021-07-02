@@ -1,5 +1,4 @@
 import { StyleSheet } from 'react-native';
-import { get } from 'react-native/Libraries/Utilities/PixelRatio';
 import {
     getSizeFromHeight,
     getSizeFromWidth

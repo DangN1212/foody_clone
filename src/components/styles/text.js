@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { COLORS } from '../../ultilities/constant';
 import {
     getSizeFromWidth,
     getSizeFromHeight
@@ -14,7 +15,7 @@ export const textStyles = StyleSheet.create({
         marginBottom: getSizeFromHeight(32)
     },
     colorOrgange: {
-        color: '#FB6D3B'
+        color: COLORS.ORANGE
     },
     text02: {
         marginBottom: getSizeFromHeight(24)
