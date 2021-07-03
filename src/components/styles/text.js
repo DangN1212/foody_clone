@@ -19,5 +19,8 @@ export const textStyles = StyleSheet.create({
     },
     text02: {
         marginBottom: getSizeFromHeight(24)
+    },
+    colorGray: {
+        color: '#9B9B9B'
     }
 });

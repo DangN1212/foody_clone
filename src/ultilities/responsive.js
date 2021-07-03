@@ -14,3 +14,6 @@ export const getSizeFromWidth = size => {
 export const getSizeFromHeight = size => {
     return (height * size) / DESIGN.HEIGHT;
 };
+export const getCommonPaddingHorizontal = (size = 24) => {
+    return getSizeFromWidth(size);
+};

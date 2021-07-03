@@ -8,5 +8,8 @@ export const images = {
     tabSaved: require('./saved.png'),
     tabSavedActive: require('./saved-active.png'),
     tabProfile: require('./user.png'),
-    tabProfileActive: require('./user-active.png')
+    tabProfileActive: require('./user-active.png'),
+    arrowOrangeDown: require('./arrow-orange-down.png'),
+    avata: require('./avata.png'),
+    search: require('./search.png')
 };
