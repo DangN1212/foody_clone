@@ -9,8 +9,7 @@ export default function Item({ data, index, height }) {
             <Image
                 source={data.image}
                 style={{
-                    width: '100%',
-                    height: height
+                    width: '100%'
                 }}
             />
         </View>
