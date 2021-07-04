@@ -11,5 +11,19 @@ export const images = {
     tabProfileActive: require('./user-active.png'),
     arrowOrangeDown: require('./arrow-orange-down.png'),
     avata: require('./avata.png'),
-    search: require('./search.png')
+    search: require('./search.png'),
+    promotion: require('./promotion.png'),
+    promotion02: require('./promotion02.jpeg'),
+    popular: require('./popular.png'),
+    clock: require('./clock.png'),
+    star: require('./star.png'),
+    snack: require('./snack.png'),
+    meal: require('./meal.png'),
+    promos: require('./discount.png'),
+    fastfood: require('./fastfood.png'),
+    drink: require('./drink.png'),
+    nearby: require('./nearby.png'),
+    New_Zealand: require('./New_Zealand.png'),
+    Italian: require('./Italian.png'),
+    Greece: require('./Greece.png')
 };

@@ -1,6 +1,7 @@
 import { Dimensions } from 'react-native';
 
-const { width, height } = Dimensions.get('window');
+export const { width: DEVICE_WIDTH, height: DEVICE_HEIGHT } =
+    Dimensions.get('window');
 
 const DESIGN = {
     WIDTH: 375,
@@ -8,11 +9,11 @@ const DESIGN = {
 };
 
 export const getSizeFromWidth = size => {
-    return (width * size) / DESIGN.WIDTH;
+    return (DEVICE_WIDTH * size) / DESIGN.WIDTH;
 };
 
 export const getSizeFromHeight = size => {
-    return (height * size) / DESIGN.HEIGHT;
+    return (DEVICE_HEIGHT * size) / DESIGN.HEIGHT;
 };
 export const getCommonPaddingHorizontal = (size = 24) => {
     return getSizeFromWidth(size);

@@ -13,5 +13,7 @@ export const COLORS = {
     ORANGE_LIGHTER: '#FFF1E5',
     GREY: '#DBDFE3',
     GREY_LIGHTER: '#F6F6F6',
-    GREY02: '#9B9B9B'
+    GREY_DARKER: '#C3C3C3',
+    GREY02: '#9B9B9B',
+    GREY_DARKER01: '#4F585E'
 };

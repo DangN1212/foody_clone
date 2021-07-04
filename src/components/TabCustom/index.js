@@ -85,15 +85,12 @@ const styles = StyleSheet.create({
     wrapperTab: {
         // height: getSizeFromHeight(81),
         flexDirection: 'row',
-        paddingVertical: getSizeFromHeight(16),
+        paddingTop: getSizeFromHeight(16),
         borderTopColor: '#EAEAEA',
         borderTopWidth: 1,
         paddingHorizontal: getSizeFromWidth(24)
     },
-    images: {
-        width: getSizeFromWidth(18),
-        maxHeight: getSizeFromHeight(25)
-    },
+    images: {},
     button: {
         borderRadius: 40,
         height: getSizeFromHeight(36),
