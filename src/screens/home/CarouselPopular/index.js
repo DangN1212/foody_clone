@@ -63,6 +63,7 @@ export default function CarouselPopular() {
                 inactiveSlideScale={1}
                 onSnapToItem={index => setActiveSlide(index)}
                 autoplay
+                loop
             />
         </View>
     );

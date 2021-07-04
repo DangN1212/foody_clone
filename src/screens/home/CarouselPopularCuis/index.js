@@ -45,6 +45,7 @@ export default function CarouselPopularCuis() {
                 inactiveSlideOpacity={1}
                 inactiveSlideScale={1}
                 autoplay
+                loop
             />
         </View>
     );

@@ -48,6 +48,7 @@ export default function CarouselPromotion() {
                 inactiveSlideScale={1}
                 onSnapToItem={index => setActiveSlide(index)}
                 autoplay
+                loop
             />
             <Pagination
                 containerStyle={styles.paginationContainer}
