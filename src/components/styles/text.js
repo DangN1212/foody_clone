@@ -39,5 +39,13 @@ export const textStyles = StyleSheet.create({
     carouselViewAll: {
         color: COLORS.ORANGE,
         fontSize: 12
+    },
+    restaurantLabel: {
+        fontSize: 12,
+        paddingHorizontal: getSizeFromWidth(8),
+        paddingVertical: getSizeFromHeight(5),
+        backgroundColor: '#F0F0F0',
+        borderRadius: 4,
+        overflow: 'hidden'
     }
 });

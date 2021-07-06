@@ -1,44 +1,53 @@
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
-import { View, Text, Image, StyleSheet } from 'react-native';
+import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { images } from '../../../assets/images';
-import { COLORS } from '../../../ultilities/constant';
+import { COLORS, ROUTES } from '../../../ultilities/constant';
 import {
     getSizeFromHeight,
     getSizeFromWidth
 } from '../../../ultilities/responsive';
 
 export default function Item({ data, index, height }) {
+    const navigation = useNavigation();
+
+    const handleClickRestaurant = params => {
+        navigation.navigate(ROUTES.RESTAURANT);
+    };
+
     return (
         <View style={styles.wrapImage}>
-            <Image
-                source={data.image}
-                style={{
-                    width: '100%'
-                }}
-            />
-            <View style={styles.wrapText}>
-                <Text style={styles.title}>{data.title}</Text>
-                <Text style={styles.text}>{data.text}</Text>
-                <View style={styles.flexRow}>
-                    <View style={{ ...styles.textInfo, ...styles.flexRow }}>
-                        <Image source={images.clock} style={styles.image} />
-                        <Text>{data.time}</Text>
-                    </View>
-                    <View style={styles.point}></View>
-                    <View style={{ ...styles.textInfo, ...styles.flexRow }}>
-                        <Text>{data.range}</Text>
-                    </View>
-                    <View
-                        style={{
-                            ...styles.textInfo,
-                            ...styles.flexRow,
-                            ...styles.starItem
-                        }}>
-                        <Image source={images.star} style={styles.image} />
-                        <Text>{data.star}</Text>
+            <TouchableOpacity onPress={handleClickRestaurant}>
+                <Image
+                    source={data.image}
+                    style={{
+                        width: '100%'
+                    }}
+                />
+                <View style={styles.wrapText}>
+                    <Text style={styles.title}>{data.title}</Text>
+                    <Text style={styles.text}>{data.text}</Text>
+                    <View style={styles.flexRow}>
+                        <View style={{ ...styles.textInfo, ...styles.flexRow }}>
+                            <Image source={images.clock} style={styles.image} />
+                            <Text>{data.time}</Text>
+                        </View>
+                        <View style={styles.point}></View>
+                        <View style={{ ...styles.textInfo, ...styles.flexRow }}>
+                            <Text>{data.range}</Text>
+                        </View>
+                        <View
+                            style={{
+                                ...styles.textInfo,
+                                ...styles.flexRow,
+                                ...styles.starItem
+                            }}>
+                            <Image source={images.star} style={styles.image} />
+                            <Text>{data.star}</Text>
+                        </View>
                     </View>
                 </View>
-            </View>
+            </TouchableOpacity>
         </View>
     );
 }

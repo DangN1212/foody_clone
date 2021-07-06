@@ -25,5 +25,10 @@ export const images = {
     nearby: require('./nearby.png'),
     New_Zealand: require('./New_Zealand.png'),
     Italian: require('./Italian.png'),
-    Greece: require('./Greece.png')
+    Greece: require('./Greece.png'),
+    Restaurant: require('./restaurant.png'),
+    RestaurantBack: require('./restaurant-back-button.png'),
+    RestaurantHeart: require('./restaurant-heart.png'),
+    RestaurantInfo: require('./restaurant-info.png'),
+    RestaurantDiscord: require('./resdiscount.png')
 };

@@ -5,7 +5,8 @@ export const ROUTES = {
     PROFILE: 'Profile',
     SAVED: 'Saved',
     ORDERS: 'Orders',
-    TAB: 'Tab'
+    TAB: 'Tab',
+    RESTAURANT: 'Restaurant'
 };
 
 export const COLORS = {
@@ -15,5 +16,6 @@ export const COLORS = {
     GREY_LIGHTER: '#F6F6F6',
     GREY_DARKER: '#C3C3C3',
     GREY02: '#9B9B9B',
-    GREY_DARKER01: '#4F585E'
+    GREY_DARKER01: '#4F585E',
+    GREY_LIGHTER01: '#EAEDF2'
 };
