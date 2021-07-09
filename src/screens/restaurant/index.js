@@ -22,9 +22,10 @@ import {
 import Checkout from './Checkout';
 import MenuAddItem from './MenuAddItem';
 import MenuSection from './MenuSection';
+import { connect } from 'react-redux';
 class Restaurant extends React.Component {
     state = {
-        foodSelected: {},
+        foodSelected: false,
         menu: [
             {
                 title: 'Special delivery',
@@ -188,19 +189,40 @@ class Restaurant extends React.Component {
                             </View>
                             {this.state.menu.map((section, index) => {
                                 return (
-                                    <MenuSection data={section} key={index} />
+                                    <MenuSection
+                                        data={section}
+                                        key={index}
+                                        onPressMenu={() => {
+                                            this.setState({
+                                                foodSelected: true
+                                            });
+                                        }}
+                                    />
                                 );
                             })}
                         </ScrollView>
-                        <Checkout />
-                        <MenuAddItem />
+                        {this.props.counter > 0 ? (
+                            <Checkout value={this.props.counter} />
+                        ) : null}
+                        {this.state.foodSelected ? (
+                            <MenuAddItem
+                                onClose={() =>
+                                    this.setState({ foodSelected: false })
+                                }
+                            />
+                        ) : null}
                     </>
                 )}
             </SafeAreaInsetsContext.Consumer>
         );
     }
 }
-export default Restaurant;
+
+const mapStateToProps = state => ({
+    counter: state.counter.value
+});
+
+export default connect(mapStateToProps)(Restaurant);
 const styles = StyleSheet.create({
     flexRow: {
         flexDirection: 'row',

@@ -7,7 +7,7 @@ import {
     getSizeFromWidth
 } from '../../../ultilities/responsive';
 
-export default function Checkout() {
+export default function Checkout({ value = 0 }) {
     return (
         <View style={styles.checkout}>
             <View style={styles.flexRow}>
@@ -15,7 +15,9 @@ export default function Checkout() {
                     <Image source={images.Checkout} />
                 </View>
                 <View>
-                    <Text style={styles.textInfo}>Checkout - 1 items</Text>
+                    <Text style={styles.textInfo}>
+                        Checkout - {value} items
+                    </Text>
                     <Text>Pizzon - Crib ln</Text>
                 </View>
             </View>

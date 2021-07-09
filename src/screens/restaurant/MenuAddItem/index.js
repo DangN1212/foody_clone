@@ -13,7 +13,7 @@ import { decrement, increment } from '../../../redux/action/Counter';
 import { buttonStyles } from '../../../components/styles/button';
 
 const MenuAddItem = props => {
-    const { increment, decrement, counter } = props;
+    const { increment, decrement, counter, onClose } = props;
 
     return (
         <View style={styles.container}>
@@ -33,7 +33,7 @@ const MenuAddItem = props => {
                     </View>
                 </View>
                 <TouchableOpacity
-                    onPress={increment}
+                    onPress={onClose}
                     style={{
                         ...buttonStyles.buttonSignIn,
                         ...buttonStyles.buttonCommon,

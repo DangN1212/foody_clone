@@ -5,7 +5,7 @@ import {
     getSizeFromWidth
 } from '../../../ultilities/responsive';
 import MenuItem from './MenuItem';
-export default function MenuSection({ data }) {
+export default function MenuSection({ data, onPressMenu }) {
     return (
         <View style={styles.section}>
             <Text style={styles.bigTitle}>{data.title}</Text>
@@ -15,6 +15,7 @@ export default function MenuSection({ data }) {
                         data={item}
                         key={index}
                         isLast={index === data.items.length - 1}
+                        onPressMenu={onPressMenu}
                     />
                 );
             })}
