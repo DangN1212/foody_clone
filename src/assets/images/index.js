@@ -30,5 +30,10 @@ export const images = {
     RestaurantBack: require('./restaurant-back-button.png'),
     RestaurantHeart: require('./restaurant-heart.png'),
     RestaurantInfo: require('./restaurant-info.png'),
-    RestaurantDiscord: require('./resdiscount.png')
+    RestaurantDiscord: require('./resdiscount.png'),
+    ResItem: require('./res-item.png'),
+    ResItem02: require('./res-item02.png'),
+    Checkout: require('./checkout.png'),
+    Minus: require('./Minus.png'),
+    Plus: require('./Plus_Button.png')
 };
