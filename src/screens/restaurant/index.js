@@ -1,17 +1,14 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {
     View,
     Text,
     Image,
-    ImageStore,
     StyleSheet,
     ImageBackground,
-    ScrollView
+    ScrollView,
+    FlatList
 } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 import { SafeAreaInsetsContext } from 'react-native-safe-area-context';
-import { images } from '../../assets/images/';
-import { textStyles } from '../../components/styles/text';
 import { COLORS } from '../../ultilities/constant';
 import {
     DEVICE_WIDTH,
@@ -23,215 +20,153 @@ import Checkout from './Checkout';
 import MenuAddItem from './MenuAddItem';
 import MenuSection from './MenuSection';
 import { connect } from 'react-redux';
-class Restaurant extends React.Component {
-    state = {
-        foodSelected: false,
-        menu: [
-            {
-                title: 'Special delivery',
-                items: [
-                    {
-                        title: 'Shrimp pizza',
-                        kcal: 475,
-                        detail: 'Shrimp, mushroom, cheese, tomato',
-                        price: '12.00',
-                        oldPrice: '20.00'
-                    },
-                    {
-                        title: 'Pinnacle pizza',
-                        kcal: 500,
-                        detail: 'Luna’s howl, hush, delirium, revoker',
-                        price: '99.00',
-                        oldPrice: '20.00'
-                    },
-                    {
-                        title: 'House Stoke Pizza ',
-                        kcal: 500,
-                        detail: 'Pig, pog, pet, pird',
-                        price: '15.00',
-                        oldPrice: '20.00'
-                    }
-                ]
-            },
-            {
-                title: 'Hot Deals',
-                items: [
-                    {
-                        title: 'Hot Deals Shrimp pizza',
-                        kcal: 475,
-                        detail: 'Shrimp, mushroom, cheese, tomato',
-                        price: '12.00',
-                        oldPrice: '20.00'
-                    },
-                    {
-                        title: 'Hot Deals Pinnacle pizza',
-                        kcal: 500,
-                        detail: 'Luna’s howl, hush, delirium, revoker',
-                        price: '99.00',
-                        oldPrice: '20.00'
-                    },
-                    {
-                        title: 'Hot Deals House Stoke Pizza ',
-                        kcal: 500,
-                        detail: 'Pig, pog, pet, pird',
-                        price: '15.00',
-                        oldPrice: '20.00'
-                    }
-                ]
-            }
-        ]
+import RestaurantBackgroundHeader from './header';
+import OverView from './OverView';
+
+const Restaurant = props => {
+    const [enableStickyHeader, setEnableStickyHeader] = useState(false);
+    const [foodSelected, setFoodSelected] = useState(false);
+    const [menu, setMenu] = useState([
+        {
+            title: 'Special delivery',
+            items: [
+                {
+                    title: 'Shrimp pizza',
+                    kcal: 475,
+                    detail: 'Shrimp, mushroom, cheese, tomato',
+                    price: '12.00',
+                    oldPrice: '20.00'
+                },
+                {
+                    title: 'Pinnacle pizza',
+                    kcal: 500,
+                    detail: 'Luna’s howl, hush, delirium, revoker',
+                    price: '99.00',
+                    oldPrice: '20.00'
+                },
+                {
+                    title: 'House Stoke Pizza ',
+                    kcal: 500,
+                    detail: 'Pig, pog, pet, pird',
+                    price: '15.00',
+                    oldPrice: '20.00'
+                }
+            ]
+        },
+        {
+            title: 'Hot Deals',
+            items: [
+                {
+                    title: 'Hot Deals Shrimp pizza',
+                    kcal: 475,
+                    detail: 'Shrimp, mushroom, cheese, tomato',
+                    price: '12.00',
+                    oldPrice: '20.00'
+                },
+                {
+                    title: 'Hot Deals Pinnacle pizza',
+                    kcal: 500,
+                    detail: 'Luna’s howl, hush, delirium, revoker',
+                    price: '99.00',
+                    oldPrice: '20.00'
+                },
+                {
+                    title: 'Hot Deals House Stoke Pizza ',
+                    kcal: 500,
+                    detail: 'Pig, pog, pet, pird',
+                    price: '15.00',
+                    oldPrice: '20.00'
+                }
+            ]
+        },
+        {
+            title: 'Hot Deals',
+            items: [
+                {
+                    title: 'Hot Deals Shrimp pizza',
+                    kcal: 475,
+                    detail: 'Shrimp, mushroom, cheese, tomato',
+                    price: '12.00',
+                    oldPrice: '20.00'
+                },
+                {
+                    title: 'Hot Deals Pinnacle pizza',
+                    kcal: 500,
+                    detail: 'Luna’s howl, hush, delirium, revoker',
+                    price: '99.00',
+                    oldPrice: '20.00'
+                },
+                {
+                    title: 'Hot Deals House Stoke Pizza ',
+                    kcal: 500,
+                    detail: 'Pig, pog, pet, pird',
+                    price: '15.00',
+                    oldPrice: '20.00'
+                }
+            ]
+        }
+    ]);
+
+    const listRef = useRef(null);
+    useEffect(() => {
+        // console.log(12345, listRef.current);
+    }, [listRef.current]);
+
+    const handleScrollFlatList = e => {
+        console.log(listRef.current.getScrollResponder());
+        // console.log('scroll123', e);
+        // console.log(listRef.current.getNode());
     };
 
-    handleBack = params => {
-        this.props.navigation.goBack();
-    };
-
-    render() {
-        return (
-            <SafeAreaInsetsContext.Consumer>
-                {inset => (
-                    <>
-                        <ScrollView>
-                            <ImageBackground
-                                source={images.Restaurant}
-                                style={styles.background}>
-                                <View style={{ paddingTop: inset.top }}></View>
-                                <View style={styles.rowButtonTop}>
-                                    <TouchableOpacity
-                                        style={styles.buttonTop}
-                                        onPress={this.handleBack}>
-                                        <Image
-                                            source={images.RestaurantBack}
-                                            style={styles.image}
-                                        />
-                                    </TouchableOpacity>
-                                    <TouchableOpacity style={styles.buttonTop}>
-                                        <Image
-                                            source={images.RestaurantHeart}
-                                            style={styles.image}
-                                        />
-                                    </TouchableOpacity>
-                                </View>
-                            </ImageBackground>
-                            <View style={styles.blockTop}>
-                                <TouchableOpacity style={styles.buttonInfo}>
-                                    <Image
-                                        source={images.RestaurantInfo}
-                                        style={styles.imageInfo}
-                                    />
-                                </TouchableOpacity>
-                                <Text style={styles.name}>
-                                    Pizzon - Crib Ln
-                                </Text>
-                                <View style={styles.flexRow}>
-                                    <Text
-                                        style={{
-                                            ...textStyles.restaurantLabel,
-                                            marginRight: 10
-                                        }}>
-                                        Fast Food
-                                    </Text>
-                                    <Text style={textStyles.restaurantLabel}>
-                                        Western cuisine
-                                    </Text>
-                                </View>
-                                <View
-                                    style={{
-                                        ...styles.flexRow,
-                                        marginTop: getSizeFromHeight(17)
-                                    }}>
-                                    <View
-                                        style={{
-                                            ...styles.textInfo,
-                                            ...styles.flexRow
-                                        }}>
-                                        <Image
-                                            source={images.clock}
-                                            style={styles.image02}
-                                        />
-                                        <Text>5 mins</Text>
-                                    </View>
-                                    <View style={styles.point}></View>
-                                    <View
-                                        style={{
-                                            ...styles.textInfo,
-                                            ...styles.flexRow
-                                        }}>
-                                        <Text>1.1 km</Text>
-                                    </View>
-                                    <View
-                                        style={{
-                                            ...styles.textInfo,
-                                            ...styles.flexRow,
-                                            ...styles.starItem
-                                        }}>
-                                        <Image
-                                            source={images.star}
-                                            style={styles.image02}
-                                        />
-                                        <Text>5</Text>
-                                    </View>
-                                    <Text
-                                        style={{
-                                            ...textStyles.colorGray,
-                                            marginLeft: getSizeFromWidth(10)
-                                        }}>
-                                        (200+ rated)
-                                    </Text>
-                                </View>
-                                <View style={styles.discordRow}>
-                                    <Image
-                                        source={images.RestaurantDiscord}
-                                        style={styles.imagesDiscord}
-                                    />
-                                    <Text>Discount 40% pizza</Text>
-                                </View>
-                            </View>
-                            {this.state.menu.map((section, index) => {
-                                return (
-                                    <MenuSection
-                                        data={section}
-                                        key={index}
-                                        onPressMenu={() => {
-                                            this.setState({
-                                                foodSelected: true
-                                            });
-                                        }}
-                                    />
-                                );
-                            })}
-                        </ScrollView>
-                        {this.props.counter > 0 ? (
-                            <Checkout value={this.props.counter} />
-                        ) : null}
-                        {this.state.foodSelected ? (
-                            <MenuAddItem
-                                onClose={() =>
-                                    this.setState({ foodSelected: false })
-                                }
+    return (
+        <SafeAreaInsetsContext.Consumer>
+            {inset => (
+                <>
+                    <RestaurantBackgroundHeader />
+                    <FlatList
+                        ref={listRef}
+                        onScroll={handleScrollFlatList}
+                        ListHeaderComponent={
+                            <OverView
+                                // headerRef={listRef}
+                                setEnableStickyHeader={setEnableStickyHeader}
                             />
-                        ) : null}
-                    </>
-                )}
-            </SafeAreaInsetsContext.Consumer>
-        );
-    }
-}
+                        }
+                        stickyHeaderIndices={enableStickyHeader ? [0] : null}
+                        data={menu}
+                        renderItem={({ item }) => (
+                            <MenuSection
+                                data={item}
+                                onPressMenu={() => {
+                                    setFoodSelected(true);
+                                }}
+                            />
+                        )}
+                    />
+                    {props.counter > 0 ? (
+                        <Checkout value={props.counter} />
+                    ) : null}
+                    {foodSelected ? (
+                        <MenuAddItem onClose={() => setFoodSelected(false)} />
+                    ) : null}
+                </>
+            )}
+        </SafeAreaInsetsContext.Consumer>
+    );
+};
 
 const mapStateToProps = state => ({
     counter: state.counter.value
 });
 
 export default connect(mapStateToProps)(Restaurant);
+
 const styles = StyleSheet.create({
     flexRow: {
         flexDirection: 'row',
         alignItems: 'center'
     },
-    background: {
-        width: DEVICE_WIDTH,
-        height: getSizeFromHeight(242)
-    },
+
     rowButtonTop: {
         flexDirection: 'row',
         justifyContent: 'space-between',
@@ -267,7 +202,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: getCommonPaddingHorizontal(),
         borderTopRightRadius: 25,
         borderTopLeftRadius: 25,
-        marginTop: -getSizeFromHeight(60),
+        marginTop: getSizeFromHeight(185),
         backgroundColor: 'white'
     },
     name: {

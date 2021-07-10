@@ -5,15 +5,17 @@ import Login from '../../screens/login';
 import SignUp from '../../screens/signup';
 import { AuthenticationTab } from '../tabs';
 import Restaurant from '../../screens/restaurant';
+import RestaurantInfo from '../../screens/restaurant/Info';
 
 const { Navigator, Screen } = createStackNavigator();
 export default function StackNavigation() {
     return (
         <Navigator headerMode="none">
-            <Screen name={ROUTES.RESTAURANT} component={Restaurant} />
-            <Screen name={ROUTES.TAB} component={AuthenticationTab} />
             <Screen name={ROUTES.LOGIN} component={Login} />
             <Screen name={ROUTES.SIGNUP} component={SignUp} />
+            <Screen name={ROUTES.TAB} component={AuthenticationTab} />
+            <Screen name={ROUTES.RESTAURANT} component={Restaurant} />
+            <Screen name={ROUTES.RESTAURANT_INFO} component={RestaurantInfo} />
         </Navigator>
     );
 }

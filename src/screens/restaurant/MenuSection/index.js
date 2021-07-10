@@ -25,11 +25,12 @@ export default function MenuSection({ data, onPressMenu }) {
 
 const styles = StyleSheet.create({
     section: {
+        zIndex: 1,
         paddingTop: getSizeFromHeight(24),
         paddingBottom: getSizeFromHeight(10),
         backgroundColor: '#ffffff',
-        borderBottomWidth: getSizeFromHeight(5),
-        borderBottomColor: '#efefef'
+        borderTopWidth: getSizeFromHeight(5),
+        borderTopColor: '#efefef'
     },
     bigTitle: {
         fontSize: 20,

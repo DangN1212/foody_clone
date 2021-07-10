@@ -35,5 +35,9 @@ export const images = {
     ResItem02: require('./res-item02.png'),
     Checkout: require('./checkout.png'),
     Minus: require('./Minus.png'),
-    Plus: require('./Plus_Button.png')
+    Plus: require('./Plus_Button.png'),
+    close: require('./close.png'),
+    mapPin: require('./map-pin.png'),
+    phone: require('./phone.png'),
+    calendar: require('./Vector.png')
 };
