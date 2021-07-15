@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { images } from '../../../assets/images';
 import { COLORS, ROUTES } from '../../../ultilities/constant';
 import {
+    DEVICE_WIDTH,
     getCommonPaddingHorizontal,
     getSizeFromHeight,
     getSizeFromWidth
@@ -10,6 +11,7 @@ import {
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import { textStyles } from '../../../components/styles/text';
+import MapView, { Marker } from 'react-native-maps';
 
 export default function RestaurantInfo() {
     const inset = useSafeAreaInsets();
@@ -29,6 +31,22 @@ export default function RestaurantInfo() {
                     <Image source={images.close} style={styles.image} />
                 </TouchableOpacity>
                 <Text style={styles.title}>Eatries Info</Text>
+            </View>
+            <View style={{ position: 'relative' }}>
+                <MapView
+                    style={styles.mapContainer}
+                    region={{
+                        latitude: 37.78825,
+                        longitude: -122.4324,
+                        latitudeDelta: 0.015,
+                        longitudeDelta: 0.0121
+                    }}>
+                    <Marker
+                        coordinate={{
+                            latitude: 37.78825,
+                            longitude: -122.4324
+                        }}></Marker>
+                </MapView>
             </View>
             <View style={styles.container}>
                 <Text style={styles.name}>Pizzon - Crib Ln</Text>
@@ -193,8 +211,8 @@ const styles = StyleSheet.create({
         marginBottom: getSizeFromHeight(15)
     },
     icon: {
-        width: getSizeFromWidth(18),
-        height: getSizeFromWidth(18),
+        width: getSizeFromWidth(12),
+        height: getSizeFromWidth(14),
         marginRight: 10
     },
     text: {
@@ -206,5 +224,10 @@ const styles = StyleSheet.create({
     flexEnd: {
         marginLeft: 'auto',
         marginRight: 0
+    },
+    mapContainer: {
+        height: getSizeFromHeight(200),
+        width: DEVICE_WIDTH,
+        marginBottom: getSizeFromHeight(24)
     }
 });

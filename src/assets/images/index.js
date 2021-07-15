@@ -39,5 +39,8 @@ export const images = {
     close: require('./close.png'),
     mapPin: require('./map-pin.png'),
     phone: require('./phone.png'),
-    calendar: require('./Vector.png')
+    calendar: require('./Vector.png'),
+    orderCount: require('./orderItem.png'),
+    checkbox: require('./checkbox.png'),
+    checkboxActive: require('./checkbox-active.png')
 };

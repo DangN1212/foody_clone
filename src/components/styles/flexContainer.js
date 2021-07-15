@@ -9,5 +9,9 @@ export const flexContainer = StyleSheet.create({
     },
     wrapper: {
         paddingHorizontal: getSizeFromWidth(24)
+    },
+    directionRow: {
+        flexDirection: 'row',
+        alignItems: 'center'
     }
 });

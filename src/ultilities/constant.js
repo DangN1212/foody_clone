@@ -20,5 +20,6 @@ export const COLORS = {
     GREY02: '#9B9B9B',
     GREY_DARKER01: '#4F585E',
     GREY_LIGHTER01: '#EAEDF2',
-    GREY_BORDER: '#EFF0F3'
+    GREY_BORDER: '#EFF0F3',
+    ORANGE02: '#FC9631'
 };
