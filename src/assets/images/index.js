@@ -42,5 +42,11 @@ export const images = {
     calendar: require('./Vector.png'),
     orderCount: require('./orderItem.png'),
     checkbox: require('./checkbox.png'),
-    checkboxActive: require('./checkbox-active.png')
+    checkboxActive: require('./checkbox-active.png'),
+    backBlack: require('./back-black.png'),
+    checkoutOrder: require('./checkoutorder.png'),
+    clock02: require('./clock02.png'),
+    cash: require('./cash.png'),
+    card: require('./card.png'),
+    dotted: require('./dotted.png')
 };

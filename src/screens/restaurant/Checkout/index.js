@@ -1,15 +1,25 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
+import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import { images } from '../../../assets/images';
-import { COLORS } from '../../../ultilities/constant';
+import { COLORS, ROUTES } from '../../../ultilities/constant';
 import {
     getSizeFromHeight,
     getSizeFromWidth
 } from '../../../ultilities/responsive';
 
+import { useNavigation } from '@react-navigation/native';
+
 export default function Checkout({ value = 0 }) {
+    const navigation = useNavigation();
+
+    const handleGoToPlaceOrder = () => {
+        navigation.navigate(ROUTES.CHECKOUT_ORDER);
+    };
+
     return (
-        <View style={styles.checkout}>
+        <TouchableOpacity
+            style={styles.checkout}
+            onPress={handleGoToPlaceOrder}>
             <View style={styles.flexRow}>
                 <View style={styles.imageCheckout}>
                     <Image source={images.Checkout} />
@@ -21,7 +31,7 @@ export default function Checkout({ value = 0 }) {
                     <Text>Pizzon - Crib ln</Text>
                 </View>
             </View>
-        </View>
+        </TouchableOpacity>
     );
 }
 

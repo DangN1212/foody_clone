@@ -20,7 +20,7 @@ export default function Item({ data, index, height }) {
                 <Text style={styles.title}>{data.title}</Text>
                 <Text style={styles.text}>{data.text}</Text>
                 <View style={styles.flexRow}>
-                    <View style={{ ...styles.textInfo, ...styles.flexRow }}>
+                    <View style={[styles.textInfo, styles.flexRow]}>
                         <Image source={images.clock} style={styles.image} />
                         <Text>{data.time}</Text>
                     </View>

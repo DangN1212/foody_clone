@@ -6,6 +6,7 @@ import SignUp from '../../screens/signup';
 import { AuthenticationTab } from '../tabs';
 import Restaurant from '../../screens/restaurant';
 import RestaurantInfo from '../../screens/restaurant/Info';
+import CheckoutOrder from '../../screens/checkoutOrder';
 
 const { Navigator, Screen } = createStackNavigator();
 export default function StackNavigation() {
@@ -16,6 +17,7 @@ export default function StackNavigation() {
             <Screen name={ROUTES.TAB} component={AuthenticationTab} />
             <Screen name={ROUTES.RESTAURANT} component={Restaurant} />
             <Screen name={ROUTES.RESTAURANT_INFO} component={RestaurantInfo} />
+            <Screen name={ROUTES.CHECKOUT_ORDER} component={CheckoutOrder} />
         </Navigator>
     );
 }
