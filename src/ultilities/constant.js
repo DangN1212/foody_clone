@@ -8,7 +8,8 @@ export const ROUTES = {
     TAB: 'Tab',
     RESTAURANT: 'Restaurant',
     RESTAURANT_INFO: 'Restaurant_info',
-    CHECKOUT_ORDER: 'Checkout Order'
+    CHECKOUT_ORDER: 'Checkout Order',
+    PROMO_CODE_APPLY: 'Promo code'
 };
 
 export const COLORS = {

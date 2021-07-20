@@ -25,6 +25,7 @@ import { textStyles } from '../../../components/styles/text';
 import CheckBoxItem from './CheckBoxItem';
 import SpecialIntruction from './SpecialIntruction';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import HeadingTop from '../../../components/Text/HeadingTop';
 
 const MenuAddItem = props => {
     const { increment, decrement, counter, onClose } = props;
@@ -44,7 +45,7 @@ const MenuAddItem = props => {
                             onPress={onClose}>
                             <Image source={images.close} style={styles.image} />
                         </TouchableOpacity>
-                        <Text style={styles.textTitle}>Add Item</Text>
+                        <HeadingTop title="Add item" />
                     </View>
                     <View style={styles.directionRow}>
                         <Image source={images.ResItem} style={styles.resImg} />

@@ -10,9 +10,8 @@ import {
 import { images } from '../../assets/images';
 import SafeViewAreaTop from '../../components/SafeViewArea/index';
 import { textStyles } from '../../components/styles/text';
-import { COLORS } from '../../ultilities/constant';
+import { COLORS, ROUTES } from '../../ultilities/constant';
 import {
-    DEVICE_HEIGHT,
     getCommonPaddingHorizontal,
     getSizeFromHeight,
     getSizeFromWidth
@@ -22,6 +21,8 @@ import OrderSummary from './OrderSummary';
 import PaymentMethod from './PaymentMethod';
 import PlaceOrder from './PlaceOrder';
 import { useNavigation } from '@react-navigation/native';
+import PromoCode from '../../components/promoCode';
+import Header from '../../components/Header';
 
 export default function CheckoutOrder() {
     const navigation = useNavigation();
@@ -34,28 +35,11 @@ export default function CheckoutOrder() {
             }}>
             <SafeViewAreaTop />
             <ScrollView stickyHeaderIndices={[0]}>
-                <View style={styles.header}>
-                    <TouchableOpacity
-                        style={styles.positionBtn}
-                        onPress={() => navigation.goBack()}>
-                        <Image
-                            source={images.backBlack}
-                            style={styles.backImage}
-                        />
-                    </TouchableOpacity>
-                    <View style={{ alignItems: 'center' }}>
-                        <Text
-                            style={[
-                                textStyles.title,
-                                { marginBottom: getSizeFromHeight(5) }
-                            ]}>
-                            Pizzon - Crib Ln
-                        </Text>
-                        <Text style={{ color: COLORS.GREY02 }}>
-                            1.1km - 15 mins
-                        </Text>
-                    </View>
-                </View>
+                <Header
+                    title="Pizzon"
+                    subtitle="1.1km - 15 mins"
+                    onBack={() => navigation.goBack()}
+                />
                 <View style={styles.container}>
                     <View
                         style={[
@@ -105,7 +89,10 @@ export default function CheckoutOrder() {
                 </View>
                 <Contact styles={styles} />
                 <OrderSummary stylesCommon={styles} />
-                <PaymentMethod stylesCommon={styles} />
+                <View style={[styles.container, { borderBottomWidth: 0 }]}>
+                    <PaymentMethod stylesCommon={styles} />
+                    <PromoCode />
+                </View>
             </ScrollView>
             <PlaceOrder />
         </View>

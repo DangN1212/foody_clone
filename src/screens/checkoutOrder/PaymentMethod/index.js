@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import {
     View,
@@ -8,15 +9,20 @@ import {
     StyleSheet
 } from 'react-native';
 import { images } from '../../../assets/images';
-import { COLORS } from '../../../ultilities/constant';
+import { COLORS, ROUTES } from '../../../ultilities/constant';
 import {
     getSizeFromHeight,
     getSizeFromWidth
 } from '../../../ultilities/responsive';
 
 export default function PaymentMethod({ stylesCommon }) {
+    const navigation = useNavigation();
+    const onGoToPromocode = () => {
+        navigation.navigate(ROUTES.PROMO_CODE_APPLY);
+    };
+
     return (
-        <View style={[stylesCommon.container]}>
+        <>
             <Text
                 style={[
                     stylesCommon.title02,
@@ -49,6 +55,7 @@ export default function PaymentMethod({ stylesCommon }) {
                     <Image source={images.card} style={styles.cardImg} />
                 </TouchableOpacity>
                 <TouchableOpacity
+                    onPress={onGoToPromocode}
                     style={[
                         styles.card,
                         stylesCommon.flexRow,
@@ -57,23 +64,7 @@ export default function PaymentMethod({ stylesCommon }) {
                     <Image source={images.dotted} style={styles.dotted} />
                 </TouchableOpacity>
             </View>
-            <View style={[stylesCommon.flexRow, { alignItems: 'stretch' }]}>
-                <TextInput
-                    placeholder="Promo Code or Voucher"
-                    style={styles.input}
-                />
-                <TouchableOpacity style={styles.applyBtn}>
-                    <Text
-                        style={{
-                            textAlign: 'center',
-                            textTransform: 'uppercase',
-                            color: 'white'
-                        }}>
-                        apply
-                    </Text>
-                </TouchableOpacity>
-            </View>
-        </View>
+        </>
     );
 }
 
@@ -103,21 +94,5 @@ const styles = StyleSheet.create({
     dotted: {
         width: 40,
         height: 8
-    },
-    input: {
-        borderColor: COLORS.GREY,
-        borderWidth: 1,
-        borderTopLeftRadius: 6,
-        borderBottomLeftRadius: 6,
-        flex: 250,
-        paddingLeft: getSizeFromWidth(16)
-    },
-    applyBtn: {
-        flex: 77,
-        justifyContent: 'center',
-        backgroundColor: COLORS.GREY_LIGHTER,
-        paddingVertical: 10,
-        borderTopRightRadius: 6,
-        borderBottomRightRadius: 6
     }
 });

@@ -48,5 +48,6 @@ export const images = {
     clock02: require('./clock02.png'),
     cash: require('./cash.png'),
     card: require('./card.png'),
-    dotted: require('./dotted.png')
+    dotted: require('./dotted.png'),
+    backgroundCode: require('./background-code.png')
 };
