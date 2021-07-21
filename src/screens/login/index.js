@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
     View,
     TextInput,
@@ -18,15 +18,24 @@ import { flexContainer } from '../../components/styles/flexContainer';
 import { textStyles } from '../../components/styles/text';
 import { inputStyles } from '../../components/styles/input';
 import { ROUTES } from '../../ultilities/constant';
+import { asyncSigIn } from '../../redux/action/Auth';
+import { useDispatch } from 'react-redux';
 
 export default function Login({ navigation }) {
+    const [email, setEmail] = useState('');
+    const [pass, setPass] = useState('');
+    const dispatch = useDispatch();
     const handleNavigateToSignIn = () => {
         navigation.navigate(ROUTES.SIGNUP);
     };
 
-    const handleSignIn = params => {
-        navigation.navigate(ROUTES.TAB);
+    const handleSignIn = async () => {
+        console.log(
+            dispatch(await asyncSigIn({ email: email, password: pass }))
+        );
     };
+
+    const onLogin = async => {};
 
     return (
         <KeyboardAvoidWrapper>
@@ -41,10 +50,14 @@ export default function Login({ navigation }) {
                     </Text>
                 </Text>
                 <TextInput
+                    value={email}
+                    onChangeText={e => setEmail(e)}
                     style={inputStyles.input}
                     placeholder="Email or Phone Number"
                 />
                 <TextInput
+                    value={pass}
+                    onChangeText={e => setPass(e)}
                     style={inputStyles.input}
                     placeholder="Password"
                     secureTextEntry={true}

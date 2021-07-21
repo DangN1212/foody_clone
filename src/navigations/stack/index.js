@@ -8,11 +8,13 @@ import Restaurant from '../../screens/restaurant';
 import RestaurantInfo from '../../screens/restaurant/Info';
 import CheckoutOrder from '../../screens/checkoutOrder';
 import PromoCodeList from '../../screens/promoCodeList';
+import InitScreen from '../../screens/InitScreen';
 
 const { Navigator, Screen } = createStackNavigator();
 export default function StackNavigation() {
     return (
         <Navigator headerMode="none">
+            <Screen name={ROUTES.INIT_SCREEN} component={InitScreen} />
             <Screen name={ROUTES.LOGIN} component={Login} />
             <Screen name={ROUTES.SIGNUP} component={SignUp} />
             <Screen name={ROUTES.TAB} component={AuthenticationTab} />

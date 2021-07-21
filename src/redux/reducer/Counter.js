@@ -1,10 +1,12 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import persistReducer from 'redux-persist/es/persistReducer';
 import { ORDER } from '../constant';
 
 const defaultOrder = {
     value: 0
 };
 
-export default function counterReducer(state = defaultOrder, action) {
+function counterReducer(state = defaultOrder, action) {
     switch (action.type) {
         case ORDER.increase:
             return { ...state, value: state.value + 1 };
@@ -14,3 +16,12 @@ export default function counterReducer(state = defaultOrder, action) {
             return state;
     }
 }
+
+const persistConfig = {
+    key: 'counter',
+    storage: AsyncStorage
+};
+
+const persistedCounterReducer = persistReducer(persistConfig, counterReducer);
+
+export default persistedCounterReducer;
