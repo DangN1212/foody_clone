@@ -9,3 +9,7 @@ export const AUTH = {
     sign_in: 'SIGN_IN',
     sign_up: 'SIGN_UP'
 };
+
+export const CATEGORIES = {
+    get: 'GET'
+};

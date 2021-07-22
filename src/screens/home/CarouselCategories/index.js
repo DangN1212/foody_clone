@@ -9,8 +9,12 @@ import {
     getSizeFromWidth
 } from '../../../ultilities/responsive';
 import ItemCategories from './Item';
+import { useSelector } from 'react-redux';
 
 export default function CarouselCategories() {
+    const categories = useSelector(state => state.categories);
+
+    console.log('[CarouselCategories]', categories);
     const data = [
         {
             text: 'Promos',

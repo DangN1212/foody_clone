@@ -5,7 +5,9 @@ import {
     TouchableOpacity,
     Text,
     StyleSheet,
-    Image
+    Image,
+    ActivityIndicator,
+    Alert
 } from 'react-native';
 import {
     getSizeFromHeight,
@@ -20,22 +22,41 @@ import { inputStyles } from '../../components/styles/input';
 import { ROUTES } from '../../ultilities/constant';
 import { asyncSigIn } from '../../redux/action/Auth';
 import { useDispatch } from 'react-redux';
+import { useNavigation } from '@react-navigation/native';
 
-export default function Login({ navigation }) {
+export default function Login() {
+    const navigation = useNavigation();
     const [email, setEmail] = useState('');
     const [pass, setPass] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
     const dispatch = useDispatch();
     const handleNavigateToSignIn = () => {
         navigation.navigate(ROUTES.SIGNUP);
     };
 
-    const handleSignIn = async () => {
-        console.log(
-            dispatch(await asyncSigIn({ email: email, password: pass }))
-        );
+    const validate = () => {
+        if (!email || !pass) {
+            Alert.alert('Error', 'Please check email and password', [
+                {
+                    text: 'OK'
+                }
+            ]);
+
+            return false;
+        }
+
+        return true;
     };
 
-    const onLogin = async => {};
+    const handleSignIn = async () => {
+        if (!validate()) {
+            return false;
+        }
+
+        setIsLoading(true);
+        dispatch(await asyncSigIn({ email: email, password: pass }));
+        setIsLoading(false);
+    };
 
     return (
         <KeyboardAvoidWrapper>
@@ -50,12 +71,15 @@ export default function Login({ navigation }) {
                     </Text>
                 </Text>
                 <TextInput
+                    autoCapitalize="none"
+                    autoCorrect={false}
                     value={email}
                     onChangeText={e => setEmail(e)}
                     style={inputStyles.input}
                     placeholder="Email or Phone Number"
                 />
                 <TextInput
+                    autoCapitalize="none"
                     value={pass}
                     onChangeText={e => setPass(e)}
                     style={inputStyles.input}
@@ -64,22 +88,27 @@ export default function Login({ navigation }) {
                 />
                 <Text style={textStyles.text02}>Forgot Password</Text>
                 <TouchableOpacity
-                    style={{
-                        ...buttonStyles.buttonSignIn,
-                        ...buttonStyles.buttonCommon
-                    }}
+                    disabled={isLoading}
+                    style={[
+                        buttonStyles.buttonSignIn,
+                        buttonStyles.buttonCommon
+                    ]}
                     onPress={handleSignIn}>
-                    <Text style={buttonStyles.text}>sign in</Text>
+                    {isLoading ? (
+                        <ActivityIndicator size="small" color="white" />
+                    ) : (
+                        <Text style={buttonStyles.text}>sign in</Text>
+                    )}
                 </TouchableOpacity>
                 <Text style={{ marginVertical: getSizeFromHeight(24) }}>
                     OR
                 </Text>
                 <TouchableOpacity
-                    style={{
-                        ...buttonStyles.buttonCommon,
-                        ...buttonStyles.buttonFb,
-                        marginBottom: getSizeFromHeight(16)
-                    }}>
+                    style={[
+                        buttonStyles.buttonCommon,
+                        buttonStyles.buttonFb,
+                        { marginBottom: getSizeFromHeight(16) }
+                    ]}>
                     <View style={buttonStyles.squareIcon}>
                         <Image source={images.facebook} />
                     </View>
@@ -88,10 +117,7 @@ export default function Login({ navigation }) {
                     </Text>
                 </TouchableOpacity>
                 <TouchableOpacity
-                    style={{
-                        ...buttonStyles.buttonCommon,
-                        ...buttonStyles.buttonGg
-                    }}>
+                    style={[buttonStyles.buttonCommon, buttonStyles.buttonGg]}>
                     <View style={buttonStyles.squareIcon}>
                         <Image source={images.goggle} />
                     </View>

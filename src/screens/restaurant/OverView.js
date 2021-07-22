@@ -12,9 +12,7 @@ import {
 } from '../../ultilities/responsive';
 export default function OverView({ setEnableStickyHeader, headerRef }) {
     const navigation = useNavigation();
-    const handleLayoutChange = e => {
-        console.log(e);
-    };
+    const handleLayoutChange = e => {};
 
     const handleNavigateToInfo = () => {
         navigation.navigate(ROUTES.RESTAURANT_INFO);

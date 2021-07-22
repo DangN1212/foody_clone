@@ -1,6 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import persistReducer from 'redux-persist/es/persistReducer';
-import persistStore from 'redux-persist/lib/persistStore';
 import { AUTH } from '../constant';
 
 const defaultAuth = {
@@ -12,15 +11,14 @@ const defaultAuth = {
 
 function authReducer(state = defaultAuth, action) {
     switch (action.type) {
-        case AUTH.sign_up:
-            return { ...state };
-            break;
         case AUTH.sign_in:
             return {
                 ...state,
                 token: action.payload.token,
                 email: action.payload.email
             };
+        case AUTH.sign_out:
+            return defaultAuth;
         default:
             return state;
     }

@@ -143,9 +143,7 @@ const Restaurant = props => {
                             />
                         )}
                     />
-                    {props.counter > 0 ? (
-                        <Checkout value={props.counter} />
-                    ) : null}
+                    <Checkout value={0} />
                     {foodSelected ? (
                         <MenuAddItem onClose={() => setFoodSelected(false)} />
                     ) : null}
@@ -155,11 +153,7 @@ const Restaurant = props => {
     );
 };
 
-const mapStateToProps = state => ({
-    counter: state.counter.value
-});
-
-export default connect(mapStateToProps)(Restaurant);
+export default Restaurant;
 
 const styles = StyleSheet.create({
     flexRow: {

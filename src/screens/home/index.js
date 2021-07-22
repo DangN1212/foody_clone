@@ -1,4 +1,5 @@
-import React from 'react';
+import { useNavigation } from '@react-navigation/native';
+import React, { useEffect } from 'react';
 import {
     View,
     Text,
@@ -9,9 +10,12 @@ import {
     ScrollView
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { useDispatch } from 'react-redux';
 import { images } from '../../assets/images';
 import { textStyles } from '../../components/styles/text';
-import { COLORS } from '../../ultilities/constant';
+import { signOut } from '../../redux/action/Auth';
+import { asyncGetCategories } from '../../redux/action/Categories';
+import { COLORS, ROUTES } from '../../ultilities/constant';
 import {
     getCommonPaddingHorizontal,
     getSizeFromHeight,
@@ -25,6 +29,21 @@ import CarouselPromotion from './CarouselPromotion';
 
 export default function Home() {
     const insets = useSafeAreaInsets();
+    const dispatch = useDispatch();
+    const navigation = useNavigation();
+    useEffect(() => {
+        getCategories();
+    }, []);
+
+    const handleSignOut = () => {
+        dispatch(signOut());
+        navigation.replace(ROUTES.LOGIN);
+    };
+
+    const getCategories = async () => {
+        // dispatch(asyncGetCategories());
+    };
+
     return (
         <View style={{ paddingTop: insets.top }}>
             <ScrollView>
@@ -44,7 +63,9 @@ export default function Home() {
                             />
                         </View>
                     </View>
-                    <Image source={images.avata} />
+                    <TouchableOpacity onPress={handleSignOut}>
+                        <Image source={images.avata} />
+                    </TouchableOpacity>
                 </View>
                 <View style={styles.searchRow}>
                     <View style={styles.rowInner}>

@@ -1,18 +1,23 @@
-import { API_CODE, API_URL } from '../../network/constant';
-import req from '../../network/request';
+import { API_CODE, API_METHOD, API_URL } from '../../network/constant';
+import { callRequest } from '../../network/request';
 import { AUTH } from '../constant';
 
 const signIn = params => {
-    console.log('123', params);
     return {
         type: AUTH.sign_in,
         payload: params
     };
 };
 
+const signOut = () => {
+    return {
+        type: AUTH.sign_out
+    };
+};
+
 const asyncSigIn = params => {
     return async dispatch => {
-        const response = await req.post(API_URL.LOGIN, {
+        const response = await callRequest(API_URL.LOGIN, API_METHOD.POST, {
             email: params.email,
             password: params.password
         });
@@ -29,4 +34,4 @@ const asyncSigIn = params => {
     };
 };
 
-export { signIn, asyncSigIn };
+export { signIn, asyncSigIn, signOut };

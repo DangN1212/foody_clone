@@ -8,16 +8,10 @@ import Login from '../login';
 
 export default function InitScreen() {
     const token = useSelector(state => state.auth.token);
-    console.log(token);
-    const navigation = useNavigation();
+    console.log('[init screen]', token);
     if (token) {
         return <AuthenticationTab />;
     } else {
         return <Login />;
     }
-    return (
-        <View>
-            <Text>123</Text>
-        </View>
-    );
 }
