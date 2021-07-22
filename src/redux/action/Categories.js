@@ -11,8 +11,9 @@ const getCategories = params => {
 
 const asyncGetCategories = () => {
     return async dispatch => {
-        // console.log(req.defaults.headers.common['Authorization']);
+        // console.log(123, req.defaults.headers.common['Authorization']);
         const res = await callRequest(API_URL.GET_CATEGORIES, API_METHOD.GET);
+        // console.log(res)
         if (res.status === API_CODE.SUCCESS) {
             dispatch(getCategories(res.data.data));
         }

@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
     View,
     Text,
@@ -13,9 +13,11 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useDispatch } from 'react-redux';
 import { images } from '../../assets/images';
 import { textStyles } from '../../components/styles/text';
+import { API_METHOD, API_URL } from '../../network/constant';
 import { signOut } from '../../redux/action/Auth';
 import { asyncGetCategories } from '../../redux/action/Categories';
 import { COLORS, ROUTES } from '../../ultilities/constant';
+import { callRequest } from '../../network/request';
 import {
     getCommonPaddingHorizontal,
     getSizeFromHeight,
@@ -31,17 +33,28 @@ export default function Home() {
     const insets = useSafeAreaInsets();
     const dispatch = useDispatch();
     const navigation = useNavigation();
+
+    const [restaurant, setRestaurant] = useState([]);
+
     useEffect(() => {
         getCategories();
+        getRestaurant();
     }, []);
 
     const handleSignOut = () => {
         dispatch(signOut());
-        navigation.replace(ROUTES.LOGIN);
+        navigation.replace(ROUTES.INIT_SCREEN);
     };
 
     const getCategories = async () => {
-        // dispatch(asyncGetCategories());
+        dispatch(asyncGetCategories());
+    };
+
+    const getRestaurant = async () => {
+        const res = await callRequest(API_URL.GET_RESTAURANT, API_METHOD.GET, {
+            page: 1
+        });
+        setRestaurant(res.data.data);
     };
 
     return (
@@ -79,7 +92,7 @@ export default function Home() {
                     </View>
                 </View>
                 <CarouselPromotion />
-                <CarouselPopular />
+                <CarouselPopular data={restaurant} />
                 <CarouselCategories />
                 <CarouselNearby />
                 <CarouselPopularCuis />

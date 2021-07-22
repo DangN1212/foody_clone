@@ -11,8 +11,8 @@ import {
 } from '../../../ultilities/responsive';
 import Item from './item';
 
-export default function CarouselPopular() {
-    const data = [
+export default function CarouselPopular({ data = [] }) {
+    const data1 = [
         {
             image: images.popular,
             title: 'Creamos - Chapel Ln',
@@ -49,7 +49,7 @@ export default function CarouselPopular() {
             <Carousel
                 renderItem={({ item, index }) => (
                     <Item
-                        data={item}
+                        data={{ ...item, image: images.popular }}
                         index={index}
                         height={getSizeFromWidth(122)}
                     />

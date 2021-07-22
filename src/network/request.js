@@ -11,9 +11,6 @@ const req = axios.create({
 
 req.interceptors.request.use(
     function (config) {
-        const token = store.getState().auth.token;
-        console.log('token', store.getState());
-        req.defaults.headers.common['Authorization'] = `Bearer ${token}`;
         return config;
     },
     function (error) {
@@ -21,7 +18,13 @@ req.interceptors.request.use(
     }
 );
 
-export const callRequest = async (apiUrl, method, data = {}) => {
+export const setToken = token => {
+    req.defaults.headers.common['Authorization'] = token
+        ? `Bearer ${token}`
+        : '';
+};
+
+export const callRequest = async (apiUrl, method, data = null) => {
     try {
         let res;
         if (method === API_METHOD.GET) {
@@ -31,11 +34,9 @@ export const callRequest = async (apiUrl, method, data = {}) => {
         } else if (method === API_METHOD.DELETE) {
             res = await req.delete(apiUrl, { data });
         }
-
         return res;
     } catch (error) {
         console.error('[API] - error', error);
-        return {};
     }
 };
 

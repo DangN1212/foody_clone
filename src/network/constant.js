@@ -6,7 +6,8 @@ const API_CODE = {
 const API_URL = {
     LOGIN: '/v1/login',
     SIGN_UP: '/v1/register',
-    GET_CATEGORIES: '/v1/categories'
+    GET_CATEGORIES: '/v1/categories',
+    GET_RESTAURANT: '/v1/restaurants'
 };
 
 const API_METHOD = {

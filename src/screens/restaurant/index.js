@@ -113,7 +113,6 @@ const Restaurant = props => {
     }, [listRef.current]);
 
     const handleScrollFlatList = e => {
-        console.log(listRef.current.getScrollResponder());
         // console.log('scroll123', e);
         // console.log(listRef.current.getNode());
     };

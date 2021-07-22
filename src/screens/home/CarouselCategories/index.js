@@ -14,26 +14,20 @@ import { useSelector } from 'react-redux';
 export default function CarouselCategories() {
     const categories = useSelector(state => state.categories);
 
-    console.log('[CarouselCategories]', categories);
     const data = [
         {
-            text: 'Promos',
             image: images.promos
         },
         {
-            text: 'Meal',
             image: images.meal
         },
         {
-            text: 'Drink',
             image: images.drink
         },
         {
-            text: 'FastFood',
             image: images.fastfood
         },
         {
-            text: 'Snack',
             image: images.snack
         }
     ];
@@ -46,9 +40,14 @@ export default function CarouselCategories() {
                 <Text style={textStyles.carouselTitle}>Popular Eatries</Text>
             </View>
             <ScrollView horizontal>
-                {data.map((item, index) => (
-                    <ItemCategories data={item} key={index} />
-                ))}
+                {categories.list.map((item, index) => {
+                    return (
+                        <ItemCategories
+                            data={{ name: item.name, image: data[index].image }}
+                            key={item.id}
+                        />
+                    );
+                })}
             </ScrollView>
         </View>
     );

@@ -11,5 +11,5 @@ export const AUTH = {
 };
 
 export const CATEGORIES = {
-    get: 'GET'
+    get: 'GET_CATEGORIES'
 };

@@ -7,10 +7,8 @@ const defaultCategories = {
 };
 
 function categoriesReducer(state = defaultCategories, action) {
-    console.log('===categoriesReducer', action.type);
     switch (action.type) {
         case CATEGORIES.get:
-            console.log('[categoriesReducer]', action.payload);
             return { ...state, list: action.payload };
         case AUTH.sign_out:
             return defaultCategories;

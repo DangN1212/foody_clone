@@ -1,5 +1,5 @@
 import { API_CODE, API_METHOD, API_URL } from '../../network/constant';
-import { callRequest } from '../../network/request';
+import { callRequest, setToken } from '../../network/request';
 import { AUTH } from '../constant';
 
 const signIn = params => {
@@ -10,6 +10,7 @@ const signIn = params => {
 };
 
 const signOut = () => {
+    setToken('');
     return {
         type: AUTH.sign_out
     };
@@ -22,6 +23,7 @@ const asyncSigIn = params => {
             password: params.password
         });
 
+        // return;
         if (response.status === API_CODE.SUCCESS) {
             dispatch(
                 signIn({ email: params.email, token: response.data.data.token })

@@ -52,7 +52,7 @@ export default function Login() {
         if (!validate()) {
             return false;
         }
-
+        // console.log(object)
         setIsLoading(true);
         dispatch(await asyncSigIn({ email: email, password: pass }));
         setIsLoading(false);

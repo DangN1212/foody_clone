@@ -12,7 +12,7 @@ export default function ItemCategories({ data }) {
             <View style={styles.squareBox}>
                 <Image source={data.image} />
             </View>
-            <Text style={styles.text}>{data.text}</Text>
+            <Text style={styles.text}>{data.name}</Text>
         </View>
     );
 }

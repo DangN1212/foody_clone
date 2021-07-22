@@ -25,16 +25,16 @@ export default function Item({ data, index, height }) {
                     }}
                 />
                 <View style={styles.wrapText}>
-                    <Text style={styles.title}>{data.title}</Text>
-                    <Text style={styles.text}>{data.text}</Text>
+                    <Text style={styles.title}>{data.name}</Text>
+                    <Text style={styles.text}>{data.address}</Text>
                     <View style={styles.flexRow}>
                         <View style={{ ...styles.textInfo, ...styles.flexRow }}>
                             <Image source={images.clock} style={styles.image} />
-                            <Text>{data.time}</Text>
+                            <Text>8H:00</Text>
                         </View>
                         <View style={styles.point}></View>
                         <View style={{ ...styles.textInfo, ...styles.flexRow }}>
-                            <Text>{data.range}</Text>
+                            <Text>{data.shipping_fee_per_km}</Text>
                         </View>
                         <View
                             style={{
@@ -43,7 +43,7 @@ export default function Item({ data, index, height }) {
                                 ...styles.starItem
                             }}>
                             <Image source={images.star} style={styles.image} />
-                            <Text>{data.star}</Text>
+                            <Text>5</Text>
                         </View>
                     </View>
                 </View>
