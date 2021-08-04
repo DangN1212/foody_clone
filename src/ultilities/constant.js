@@ -10,7 +10,8 @@ export const ROUTES = {
     RESTAURANT_INFO: 'Restaurant_info',
     CHECKOUT_ORDER: 'Checkout Order',
     PROMO_CODE_APPLY: 'Promo code',
-    INIT_SCREEN: 'Init screen'
+    INIT_SCREEN: 'Init screen',
+    COUNT_DOWN: 'Count down'
 };
 
 export const COLORS = {

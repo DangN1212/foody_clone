@@ -9,11 +9,13 @@ import RestaurantInfo from '../../screens/restaurant/Info';
 import CheckoutOrder from '../../screens/checkoutOrder';
 import PromoCodeList from '../../screens/promoCodeList';
 import InitScreen from '../../screens/InitScreen';
+import CountDown from '../../screens/count_down';
 
 const { Navigator, Screen } = createStackNavigator();
 export default function StackNavigation() {
     return (
         <Navigator headerMode="none">
+            <Screen name={ROUTES.COUNT_DOWN} component={CountDown} />
             <Screen name={ROUTES.INIT_SCREEN} component={InitScreen} />
             <Screen name={ROUTES.LOGIN} component={Login} />
             <Screen name={ROUTES.SIGNUP} component={SignUp} />
